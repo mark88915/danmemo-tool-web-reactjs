@@ -1,0 +1,43 @@
+/***** Header Navigation Bar *****/
+#headerNavBar {
+    padding: 20px;
+    border-bottom: solid black;
+}
+
+.navItem {
+    display: inline;
+    font-size: 20px;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+    color: gray;
+}
+
+.navItem:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.navItem:active {
+    color: blue;
+}
+
+/***** Basic Setting *****/
+
+html, body {
+/* set html and body height to 100% to expand the viewport */
+    height: 100%;
+}
+
+#root {
+/* set #root height to 100% because it is #background's parent */
+    height: 100%;
+    overflow: hidden;
+}
+
+#background {
+    background-image: url('./image/5anni.png');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+}

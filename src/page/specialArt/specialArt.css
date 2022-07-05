@@ -1,0 +1,27 @@
+#specialArtCalculateContainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 20%;
+    overflow-x: auto; /* 讓table可以橫向滾動 */
+    background-color: rgba(255, 255, 255, 0.795);
+}
+
+#specialArtCalculateTable {
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+input, select {
+    font-size: 18px;
+}
+
+#buttonGroup {
+    position: relative;
+    top: 100%;
+    margin-left: auto;
+}
+
+#calculate, #clear {
+    font-size: 20px;
+}

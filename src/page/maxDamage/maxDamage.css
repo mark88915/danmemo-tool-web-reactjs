@@ -1,0 +1,70 @@
+/***** Max Damage Calculation Page *****/
+#maxDamageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.contentBox {
+    width: 50%;
+    position: relative;
+}
+#damageInputBox {
+    position: absolute;
+    padding: 10px;
+    width: 600px;
+    margin-top: 20%;
+    left: 10%;
+    background-color: #fff;
+    border: black 5px solid;
+    border-radius: 5%;
+    opacity: 90%;
+}
+
+#firstDamage, #secondDamage, #maxDamageCalculate, #clearResult, .damageLabel{
+    font-size: 30px;
+}
+
+#maxDamageCalculate, #clearResult {
+    margin-top: 40px;
+    float: right;
+    margin-right: 10px;
+}
+
+#maxDamageCalculate:hover, #clearResult:hover {
+    background-color: rgb(209, 209, 209);
+}
+
+#maxDamageCalculate:active, #clearResult:active {
+    background-color: gray;
+}
+
+#damageTable {
+    position: absolute;
+    margin-top: 8%;
+    left: 30%;
+    border: 3px solid black;
+    border-collapse: collapse;
+    font-size: 32px;
+    background-color: white;
+    opacity: 90%;
+    width: 50%;
+    user-select: none;
+}
+
+#damageTable th, #damageTable td {
+    border: 3px solid black;
+    padding: 6px;
+}
+
+#damageTable thead {
+    background-color: rgb(252, 181, 181);
+}
+
+#damageTable tr:nth-child(even) {
+    background-color: rgb(216, 216, 216);
+}
+
+tbody tr {
+    text-align: center;
+}

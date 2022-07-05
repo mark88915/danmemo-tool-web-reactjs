@@ -1,0 +1,17 @@
+/***** Home Page *****/
+
+#commentBox {
+    position: absolute;
+    left: 33%;
+    top: 30%;
+    width: 35%;
+    height: 200px;
+    background-color: white;
+    border: 5px black solid;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    opacity: 90%;
+    line-height: 200px;
+    user-select: none;
+}
