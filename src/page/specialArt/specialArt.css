@@ -1,6 +1,4 @@
 #specialArtCalculateContainer {
-    display: flex;
-    flex-direction: column;
     position: relative;
     top: 20%;
     overflow-x: auto; /* 讓table可以橫向滾動 */
@@ -10,6 +8,7 @@
 #specialArtCalculateTable {
     border-radius: 5px;
     font-size: 20px;
+    width: 100%; /* 把table撐開才可以把按鈕擠去下面 */
 }
 
 input, select {
@@ -17,11 +16,27 @@ input, select {
 }
 
 #buttonGroup {
-    position: relative;
-    top: 100%;
-    margin-left: auto;
+    position: fixed;
+    margin-top: 3px;
+    right: 0;
 }
 
 #calculate, #clear {
-    font-size: 20px;
+    font-size: 25px;
+    margin-right: 3px;
+    background-color: #fff;
+    border: 3px solid white;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 5px;
+}
+
+#calculate:hover, #clear:hover {
+    background-color: rgb(240, 240, 240);
+    border-color: rgb(240, 240, 240);
+    color: blue;
+}
+
+#calculate:active, #clear:active {
+    border-color: blue;
 }

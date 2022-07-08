@@ -5,10 +5,10 @@ import SpecialArtTableRateFooter from "../component/specialArt/specialArtTableRa
 import SpecialArtTableHeader from "../component/specialArt/specialArtTableHeader";
 
 import { useState } from 'react'
-import { v4 } from "uuid";
 
 const SpecialArt = () => {
     const battleTurns = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"] //回合數
+    const [notToReRender, SetNotToReRender] = useState(true);
 
     /* 每回合的技量總和State */
     const [turn1, setTurn1] = useState(0);
@@ -32,7 +32,6 @@ const SpecialArt = () => {
     /* 傳每回合技量用的陣列 */
     const turns = [turn1, turn2, turn3, turn4, turn5, turn6, turn7, turn8, turn9, turn10, turn11, turn12, turn13, turn14];
 
-    const characters = ["1", "2", "3", "4", "5", "6"]; // 角色數
     const specialArtRate = { // 必殺技量對應數值
         "0" : 0,
         "0%" : 1,
@@ -56,7 +55,7 @@ const SpecialArt = () => {
      * 6.最後再把total清0
      */
     function SpecialArtRateCalculate(){
-        ClearAllTurnRate();
+        SetNotToReRender(true);
         var previousTurnTotal = 0;
         var total = 0;
 
@@ -64,8 +63,6 @@ const SpecialArt = () => {
             var thisTurnRate = Array.from(document.getElementsByClassName((index+1).toString()));
 
             thisTurnRate.forEach(turnRate => total = total + specialArtRate[turnRate.value]);
-
-            if(total === 0) return;
 
             setTurn(total + previousTurnTotal);
             previousTurnTotal += total;
@@ -75,6 +72,7 @@ const SpecialArt = () => {
 
     /* 清除用function */
     function ClearAllTurnRate(){
+        SetNotToReRender(false);
         setTurns.forEach(setTurn => setTurn(0));
     }
 
@@ -86,7 +84,12 @@ const SpecialArt = () => {
                 </thead>
 
                 <tbody>
-                    {characters.map(characterNo => <SpecialArtTableComponent battleTurns={battleTurns} key={v4()} />)}
+                    <SpecialArtTableComponent battleTurns={battleTurns} notToReRender={notToReRender} />
+                    <SpecialArtTableComponent battleTurns={battleTurns} notToReRender={notToReRender} />
+                    <SpecialArtTableComponent battleTurns={battleTurns} notToReRender={notToReRender} />
+                    <SpecialArtTableComponent battleTurns={battleTurns} notToReRender={notToReRender} />
+                    <SpecialArtTableComponent battleTurns={battleTurns} notToReRender={notToReRender} />
+                    <SpecialArtTableComponent battleTurns={battleTurns} notToReRender={notToReRender} />
                     <SpecialArtTableRateFooter accumulationRate={turns} />
                     <SpecialArtTableTotalFooter accumulationRate={turns} />
                 </tbody>                
@@ -95,7 +98,7 @@ const SpecialArt = () => {
             <div id="buttonGroup">
                 <button id="calculate" onClick={SpecialArtRateCalculate}>計算</button>
                 <button id="clear" onClick={ClearAllTurnRate}>清除</button>
-            </div>         
+            </div>
         </div>
     )
 }

@@ -1,5 +1,3 @@
-import { memo } from 'react';
-
 const SpecialArtSelectOptionComponent = ({turn}) => {
     return (
         <select className={turn}>
@@ -18,4 +16,4 @@ const SpecialArtSelectOptionComponent = ({turn}) => {
     )
 }
 
-export default memo(SpecialArtSelectOptionComponent);
+export default SpecialArtSelectOptionComponent;
