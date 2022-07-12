@@ -11,7 +11,7 @@
     width: 100%; /* 把table撐開才可以把按鈕擠去下面 */
 }
 
-input, select {
+td > input, td > select {
     font-size: 18px;
 }
 
