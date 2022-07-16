@@ -5,12 +5,27 @@
 }
 
 .navItem {
-    display: inline;
     font-size: 20px;
     text-decoration: none;
     margin-right: 20px;
     font-weight: bold;
     color: gray;
+}
+
+@media screen and (max-width:500px) {
+    .navItem {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width:350px) {
+    #headerNavBar {
+        padding: 15px;
+    }
+
+    .navItem {
+        font-size: 12px;
+    }
 }
 
 .navItem:hover {

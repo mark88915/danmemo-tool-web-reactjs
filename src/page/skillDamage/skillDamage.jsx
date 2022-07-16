@@ -125,6 +125,7 @@ const SkillDamage = () => {
         }
         var skillPowerRate = skillPowerRateObj[skillPower][target];
 
+        /** 檢核貫穿與格擋 **/
         if (isPenenstration && isGuarded) {
             SetBasicDamage("貫穿與格擋不會同時發生");
             return;

@@ -1,69 +1,137 @@
 /***** Max Damage Calculation Page *****/
 #maxDamageContainer {
     display: flex;
-    flex-wrap: wrap;
     height: 100%;
+    overflow-y: auto;
 }
 
 .contentBox {
-    width: 50%;
-    position: relative;
-}
-#damageInputBox {
-    position: absolute;
-    padding: 10px;
-    width: 600px;
-    margin-top: 20%;
-    left: 10%;
-    background-color: #fff;
-    border: black 5px solid;
-    border-radius: 5%;
-    opacity: 90%;
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid black; */
+    width: 100%;
 }
 
-#firstDamage, #secondDamage, #maxDamageCalculate, #clearResult, .damageLabel{
+#damageInputBox {
+    margin-top: 20%;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(255, 255, 255, 0.842);
+    border-radius: 5%;
+}
+
+#firstDamage, #secondDamage, .damageLabel{
     font-size: 30px;
 }
 
-#maxDamageCalculate, #clearResult {
-    margin-top: 40px;
-    float: right;
-    margin-right: 10px;
+#calculate, #clear {
+    font-size: 25px;
+    margin-right: 3px;
+    background-color: #fff;
+    border: 3px solid white;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 5px;
 }
 
-#maxDamageCalculate:hover, #clearResult:hover {
-    background-color: rgb(209, 209, 209);
+#calculate:hover, #clear:hover {
+    background-color: rgb(240, 240, 240);
+    border-color: rgb(240, 240, 240);
+    color: blue;
 }
 
-#maxDamageCalculate:active, #clearResult:active {
-    background-color: gray;
+#calculate:active, #clear:active {
+    border-color: blue;
+}
+
+@media screen and (max-width: 1200px) {
+    #firstDamage, #secondDamage, #calculate, #clear, .damageLabel{
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 1000px) {    
+    #firstDamage, #secondDamage, #calculate, #clear, .damageLabel{
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 750px) {    
+    #firstDamage, #secondDamage, #calculate, #clear, .damageLabel{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #maxDamageContainer {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    #damageInputBox {
+        margin-top: 5%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    #firstDamage, #secondDamage, #calculate, #clear, .damageLabel{
+        font-size: 13px;
+    }
+}
+
+#maxDamageButtonGroup {
+    margin-top: 30px;
+}
+
+@media screen and (max-height:750px) {
+    #maxDamageButtonGroup {
+        margin-top: 10px;
+    }
 }
 
 #damageTable {
-    position: absolute;
-    margin-top: 8%;
-    left: 30%;
-    border: 3px solid black;
+    margin-top: 10%;
+    border: 1px solid rgba(0, 0, 0, 0.85);
     border-collapse: collapse;
     font-size: 32px;
-    background-color: white;
-    opacity: 90%;
+    background-color: rgba(255, 255, 255, 0.85);
     width: 50%;
-    user-select: none;
+    height: 70%;
+    text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+    #damageTable {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    #damageTable {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #damageTable {
+        width: 70%;
+    }
 }
 
 #damageTable th, #damageTable td {
-    border: 3px solid black;
-    padding: 6px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.85);
 }
 
-#damageTable thead {
-    background-color: rgb(252, 181, 181);
+/* #damageTable thead {
+    background-color: rgba(252, 216, 216, 0.85);
 }
 
 #damageTable tr:nth-child(even) {
-    background-color: rgb(216, 216, 216);
-}
+    background-color: rgb(216, 216, 216, 0.85);
+} */
 
 tbody tr {
     text-align: center;

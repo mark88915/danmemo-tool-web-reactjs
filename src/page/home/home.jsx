@@ -4,7 +4,7 @@ const Home = () => {
     return (
         <div id="homeContent">
             <div id="commentBox">
-                練習React.js的Side Project
+                記憶憧憬工具網
             </div>
         </div>
     )

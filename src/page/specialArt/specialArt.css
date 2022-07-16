@@ -20,23 +20,3 @@ td > input, td > select {
     margin-top: 3px;
     right: 0;
 }
-
-#calculate, #clear {
-    font-size: 25px;
-    margin-right: 3px;
-    background-color: #fff;
-    border: 3px solid white;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 5px;
-}
-
-#calculate:hover, #clear:hover {
-    background-color: rgb(240, 240, 240);
-    border-color: rgb(240, 240, 240);
-    color: blue;
-}
-
-#calculate:active, #clear:active {
-    border-color: blue;
-}

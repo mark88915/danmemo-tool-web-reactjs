@@ -1,27 +1,70 @@
 #skillDamageContainer {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 85%;
     display: flex;
     justify-content: center;
-    overflow-y: auto;
+}
+
+@media screen and (min-height: 800px) {
+    #skillDamageContainer {
+        height: auto;
+    }
 }
 
 #skillDamageDataForm {
     background-color: rgba(255, 255, 255, 0.842);
-    width: 50%;
+    width: 60%;
+    height: 100%;
     margin-top: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    padding-bottom: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+@media screen and (max-width: 900px) {
+    #skillDamageDataForm {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #skillDamageDataForm {
+        width: 90%;
+    }
+}
+
+.fieldRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    padding-left: 5%;
+}
+
+.fieldBlock {
+    width: 50%;
 }
 
 .field > input, .field > select{
     margin-bottom: 10px;
 }
 
+@media screen and (max-width: 700px) {
+    .fieldRow{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fieldBlock {
+        margin: 3px;
+    }
+}
+
 .splitLine {
     margin-left: 10px;
-    margin-right: 10px;
 }
 
 #notification {
@@ -29,29 +72,25 @@
     float: right;
 }
 
+@media screen and (max-width: 400px) {
+    #notification {
+        float: none;
+    }
+}
+
 .fieldTitle {
-    width: 30%;
-}
-
-.fieldTitle:hover {
-    color: blue;
-}
-
-.fieldTitle:active {
-    text-decoration: underline;
+    width: 40%;
 }
 
 #skillDamagebuttonGroup {
-    position: relative;
     float: right;
-    margin-bottom: 5px;
 }
 
 #tableContainer {
-    display: flex;
     justify-content: center;
     text-align: center;
     border-top: 3px black solid;
+    overflow-x: auto;
 }
 
 #skillDamageTable {
@@ -59,9 +98,34 @@
     margin-bottom: 5px;
     border: 2px solid black;
     border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed; /* 平分td的寬度 */
+}
+
+@media screen and (max-width: 1000px) {
+    #skillDamageTable {
+        width: 150%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #skillDamageTable {
+        width: 180%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #skillDamageTable {
+        width: 210%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    #skillDamageTable {
+        width: 300%;
+    }
 }
 
 #skillDamageTable td{
     border: 2px solid black;
-    width: 70px;
 }

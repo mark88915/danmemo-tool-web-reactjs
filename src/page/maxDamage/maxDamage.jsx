@@ -53,8 +53,10 @@ const MaxDamage = () => {
                 <p className="damageLabel">第二個傷害：</p>
                 <input type="text" id="secondDamage" value={secondDamage} onChange={set2ndDamage}></input>
                 <br />
-                <button id="clearResult" onClick={clearResult}>清除</button>
-                <button id="maxDamageCalculate" onClick={damageCalculate}>計算</button>
+                <div id="maxDamageButtonGroup">
+                    <button id="calculate" onClick={damageCalculate}>計算</button>
+                    <button id="clear" onClick={clearResult}>清除</button>
+                </div>
             </div>
         </div>
         <div className="contentBox">

@@ -1,17 +1,36 @@
 /***** Home Page *****/
 
+#homeContent{
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 #commentBox {
-    position: absolute;
-    left: 33%;
-    top: 30%;
     width: 35%;
     height: 200px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.849);
     border: 5px black solid;
     text-align: center;
     font-size: 32px;
-    font-weight: bold;
-    opacity: 90%;
     line-height: 200px;
     user-select: none;
+    margin-top: 10%;
+}
+
+@media screen and (max-width:700px) {
+    #commentBox{
+        height: 100px;
+        line-height: 100px;
+        font-size: 25px;
+        width: 60%;
+        margin-top: 25%;
+    }
+}
+
+@media screen and (max-width:300px) {
+    #commentBox{
+        font-size: 20px;
+    }
 }
