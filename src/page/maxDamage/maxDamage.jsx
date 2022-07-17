@@ -7,6 +7,9 @@ import './maxDamage.css'
 
 const MaxDamage = () => {
 
+    // 整數驗證規則
+    var positiveInputRule = new RegExp("^\\d*$");
+
     // 傷害範圍
     const damageRateRange = [1.04, 1.03, 1.02, 1.01, 1.00, 0.99, 0.98, 0.97, 0.96]
 
@@ -18,18 +21,33 @@ const MaxDamage = () => {
     /* function */
     // set first damage state
     function set1stDamage(e) {
-        setFirstDamage(e.target.value);
+        var inputValue = e.target.value;
+
+        if(positiveInputRule.test(inputValue) || inputValue === ""){
+            setFirstDamage(inputValue);
+            return;
+        }
+
+        alert("請輸入正整數");
     }
 
     // set second damage state
     function set2ndDamage(e) {
-        setSecondDamage(e.target.value);
+        var inputValue = e.target.value;
+
+        if(positiveInputRule.test(inputValue) || inputValue === ""){
+            setSecondDamage(inputValue);
+
+            return;
+        }
+
+        alert("請輸入正整數");
     }
 
     // calculate damage 
     function damageCalculate() {
         // 如果第一個傷害和第二個傷害是0或預設的空字串，傷害基準就設為0
-        if ((firstDamage === 0 && secondDamage === 0) || (firstDamage === "" && secondDamage === "")) {
+        if ((firstDamage === "0" && secondDamage === "0") || (firstDamage === "" && secondDamage === "")) {
             setBasicDamage(0);
             return;
         }

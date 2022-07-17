@@ -1,12 +1,33 @@
 const MainField = ({ mainFieldState }) => {
 
-    /** input檢核，只能輸入大於零的正整數 **/
-    function CheckInputIsLegal(e) {
-        if (e.target.value >= 0 || e.target.value === "") {
-            mainFieldState[e.target.id]["setState"](e.target.value);
-        } else {
-            alert("請輸入大於等於零的正整數");
+    // 正整數驗證規則
+    var positiveInputRule = new RegExp("^\\d*$");
+
+    // 整數驗證規則
+    var inputRule = new RegExp("^-?\\d*$");
+
+    /** input檢核，只能輸入大於等於零的整數 **/
+    function CheckPositiveInputIsLegal(e) {
+        var inputValue = e.target.value;
+
+        if (positiveInputRule.test(inputValue) || inputValue === "") {
+            mainFieldState[e.target.id]["setState"](inputValue);
+            return;
         }
+
+        alert("請輸入正整數");
+    }
+
+    /** input檢核，只能為正或負整數 **/
+    function CheckInputIsLegal(e) {
+        var inputValue = e.target.value;
+
+        if (inputRule.test(inputValue) || inputValue === "") {
+            mainFieldState[e.target.id]["setState"](inputValue);
+            return;
+        }
+
+        alert("請輸入整數");
     }
 
     /** 設定select的value，不能直接使用物件裡的setState作為onChange的function **/
@@ -28,7 +49,7 @@ const MainField = ({ mainFieldState }) => {
             <div className="fieldRow">
                 <div className="fieldBlock">
                     <label>攻擊力：</label>
-                    <input type="text" id="power" placeholder="面板物理 / 魔法攻擊" value={mainFieldState["power"]["state"]} onChange={CheckInputIsLegal} />
+                    <input type="text" id="power" placeholder="面板物理 / 魔法攻擊" value={mainFieldState["power"]["state"]} onChange={CheckPositiveInputIsLegal} />
                 </div>
 
                 <div className="fieldBlock">
@@ -59,7 +80,7 @@ const MainField = ({ mainFieldState }) => {
             <div className="fieldRow">
                 <div className="fieldBlock">
                     <label>對象防禦力：</label>
-                    <input type="text" id="enemyDefense" placeholder="PVE請設100" value={mainFieldState["enemyDefense"]["state"]} onChange={CheckInputIsLegal} />
+                    <input type="text" id="enemyDefense" placeholder="PVE請設100" value={mainFieldState["enemyDefense"]["state"]} onChange={CheckPositiveInputIsLegal} />
                 </div>
 
                 <div className="fieldBlock">

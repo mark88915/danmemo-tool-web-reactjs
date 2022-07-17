@@ -64,6 +64,7 @@ const SkillDamage = () => {
     }
     /** end of other field **/
 
+    // 傷害State
     const [basicDamage, SetBasicDamage] = useState(0);
 
     /** 傷害係數對照，格式[skillPower][target] **/
@@ -99,6 +100,7 @@ const SkillDamage = () => {
         }
     }
 
+    /** 計算function **/
     function CheckAndCalculateSkillDamage() {
         /** 種族殺手 **/
         var killerRate = isKiller ? 1.5 : 1;

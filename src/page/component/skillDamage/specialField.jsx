@@ -1,13 +1,35 @@
 const SpecialField = ({ specialFieldState }) => {
 
-    /** input檢核，只能輸入大於零的正整數 **/
-    function CheckInputIsLegal(e) {
-        if (e.target.value >= 0 || e.target.value === "") {
-            specialFieldState[e.target.id]["setState"](e.target.value);
-        } else {
-            alert("請輸入大於等於零的正整數");
+    // 正整數驗證規則
+    var positiveInputRule = new RegExp("^\\d*$");
+
+    // 整數驗證規則
+    var inputRule = new RegExp("^-?\\d*$");
+
+    /** input檢核，只能輸入大於等於零的整數 **/
+    function CheckPositiveInputIsLegal(e) {
+        var inputValue = e.target.value;
+
+        if (positiveInputRule.test(inputValue) || inputValue === "") {
+            specialFieldState[e.target.id]["setState"](inputValue);
+            return;
         }
+
+        alert("請輸入正整數");
     }
+
+    /** input檢核，只能為正或負整數 **/
+    function CheckInputIsLegal(e) {
+        var inputValue = e.target.value;
+
+        if (inputRule.test(inputValue) || inputValue === "") {
+            specialFieldState[e.target.id]["setState"](inputValue);
+            return;
+        }
+
+        alert("請輸入整數");
+    }
+
 
     /** 設定select的value，不能直接使用物件裡的setState作為onChange的function **/
     function SetDropDownListValue(e) {
@@ -37,7 +59,7 @@ const SpecialField = ({ specialFieldState }) => {
             <div className="fieldRow">
                 <div className="fieldBlock">
                     <label>屬性傷害總額：</label>
-                    <input type="text" id="elementDamage" placeholder="含支援、眷族技能" value={specialFieldState["elementDamage"]["state"]} onChange={CheckInputIsLegal} />
+                    <input type="text" id="elementDamage" placeholder="含支援、眷族技能" value={specialFieldState["elementDamage"]["state"]} onChange={CheckPositiveInputIsLegal} />
                 </div>
 
                 <div className="fieldBlock">
@@ -49,7 +71,7 @@ const SpecialField = ({ specialFieldState }) => {
             <div className="fieldRow">
                 <div className="fieldBlock">
                     <label>特殊增傷總額：</label>
-                    <input type="text" id="specialBoost" placeholder="每個OO使技能威力上升" value={specialFieldState["specialBoost"]["state"]} onChange={CheckInputIsLegal} />
+                    <input type="text" id="specialBoost" placeholder="每個OO使技能威力上升" value={specialFieldState["specialBoost"]["state"]} onChange={CheckPositiveInputIsLegal} />
                 </div>
 
                 <div className="fieldBlock">
@@ -72,7 +94,7 @@ const SpecialField = ({ specialFieldState }) => {
 
                 <div className="fieldBlock">
                     <label>被動增傷數值：</label>
-                    <input type="text" id="developmentAbilityRate" value={specialFieldState["developmentAbilityRate"]["state"]} onChange={CheckInputIsLegal} />
+                    <input type="text" id="developmentAbilityRate" value={specialFieldState["developmentAbilityRate"]["state"]} onChange={CheckPositiveInputIsLegal} />
                 </div>
             </div>
 
