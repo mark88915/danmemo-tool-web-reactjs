@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.15910ff5.css",
-    "main.js": "/static/js/main.89e155de.js",
-    "static/media/5anni.png": "/static/media/5anni.751f6682044d952f3527.png",
-    "index.html": "/index.html",
-    "main.15910ff5.css.map": "/static/css/main.15910ff5.css.map",
-    "main.89e155de.js.map": "/static/js/main.89e155de.js.map"
+    "main.css": "/mark88915.github.io/danmemo-tool-web-reactjs/static/css/main.210ed463.css",
+    "main.js": "/mark88915.github.io/danmemo-tool-web-reactjs/static/js/main.89e155de.js",
+    "static/media/5anni.png": "/mark88915.github.io/danmemo-tool-web-reactjs/static/media/5anni.751f6682044d952f3527.png",
+    "index.html": "/mark88915.github.io/danmemo-tool-web-reactjs/index.html",
+    "main.210ed463.css.map": "/mark88915.github.io/danmemo-tool-web-reactjs/static/css/main.210ed463.css.map",
+    "main.89e155de.js.map": "/mark88915.github.io/danmemo-tool-web-reactjs/static/js/main.89e155de.js.map"
   },
   "entrypoints": [
-    "static/css/main.15910ff5.css",
+    "static/css/main.210ed463.css",
     "static/js/main.89e155de.js"
   ]
 }
