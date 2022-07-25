@@ -52,7 +52,39 @@ const MaxDamage = () => {
             return;
         }
 
-        setBasicDamage((secondDamage - firstDamage) / Math.round((secondDamage - firstDamage) * 100 / firstDamage) * 100);
+        var damageArrayOne = [];
+        var damageArrayTwo = [];
+
+        // 規則：傷害浮動範圍為基礎傷害值的0.96~1.04倍，間隔為0.01，因此除基礎傷害值外還有8個數字
+        // 情境：在對應倍率未知的情況下獲取0.96~1.04間的其中兩個數字
+        // 使用遍歷傷害1與傷害2除以倍率範圍內的值來產生所有可能的基礎傷害
+        // 當兩個迴圈中有值的差小於等於1時就代表此數字為基礎傷害值，在以此數值去產生所有可能的傷害數值
+        damageRateRange.forEach(damageRate => {
+            damageArrayOne.push(Math.round(firstDamage/damageRate));
+            damageArrayTwo.push(Math.round(secondDamage/damageRate));
+        });
+
+        // 若找到了就把值改為true來斷掉迴圈，以節省效能
+        var isBasicDamageSet = false;
+
+        damageArrayOne.forEach(damageOne => {
+            if(isBasicDamageSet){
+                return;
+            }
+
+            damageArrayTwo.forEach(damageTwo => {
+                if(Math.abs(damageOne - damageTwo) <= 1){
+                    setBasicDamage(damageOne);
+                    isBasicDamageSet = true;
+                }
+            })
+        });
+
+        // 若基礎傷害值還未設定過，就說明沒有對應的傷害數值，因此報錯
+        if(!isBasicDamageSet){
+            setBasicDamage(0);
+            alert("請確認兩個傷害數值是在相同情況下產生");
+        }
     }
 
     // clear input and result
