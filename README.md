@@ -1,70 +1,226 @@
-# Getting Started with Create React App
+# 記憶憧憬工具網
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 前言
 
-## Available Scripts
+此Side Project的製作動機有二：
+一、為了練習React.js以及熟悉Flex Box切版還有RWD
+二、提供簡易工具網站給一些沒有自己拉Excel或者不清楚公式等等的人使用
 
-In the project directory, you can run:
+## 使用到的工具
 
-### `npm start`
+去年使用Html、Javascript、CSS完成Ver.1，但未部屬來給其他玩家使用
+此工具網為Ver.2，使用了React.js以及CSS來製作
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+IDE皆為Visual Studio Code
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# 使用說明
 
-### `npm test`
+## 介紹之前
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+此次作為使用情境的隊伍以及相關資訊如下：
+隊伍為**地物**，關卡為七鬥領域中的**雷之領域(地屬性耐性-50%)**
+![隊伍](https://i.imgur.com/rcHG8nh.jpg)
 
-### `npm run build`
+在**3T單必**收的情況下，打出的必殺傷害為以下兩個
+![分數1](https://i.imgur.com/i4lGchc.jpg)
+![分數2](https://i.imgur.com/yC2gGSX.jpg)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 首頁
+這部分沒什麼好說明的XD，單純展示
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+*此為電腦版首頁畫面：*
+![電腦版首頁](https://i.imgur.com/7i8ztAY.jpg)
 
-### `npm run eject`
+*此為移動(手機)版首頁畫面：*
+![移動版首頁](https://i.imgur.com/kVcA8UW.jpg)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 最大傷害頁籤
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 基本介紹
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+*此為電腦版最大傷害頁籤畫面：*
+![電腦版最大傷害頁籤](https://i.imgur.com/1GVEcgq.jpg)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> 情境介紹：
+> 為什麼要算最大傷呢？
+> 因為在七鬥領域或者派閥鬥劇這兩個遊戲模式中，**分數計算的部分會參考到玩家於該局中打出的最高傷害**。因此這個功能可以幫助玩家們來看看自己是否打到最大傷然後就可以休息了(X
+>
+> 背景知識：
+> 此遊戲中的**傷害浮動範圍為0.96~1.04**(間隔為0.01)，因此總共會有9種傷害數值
+> 
+> 使用說明：
+> 玩家需要做的事就是**紀錄任兩個相同情況下打出的不同數字**，相同情況的意思為所有數值(包含Buff/Debuff等等)以及是否爆擊或貫穿之類的條件皆相同的情況下打出的數字
 
-## Learn More
+*將段落開始時提供的資料中的必殺傷害填入後結果如下圖：*
+![電腦版最大傷害結果](https://i.imgur.com/znFYoWB.jpg)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+基本上只要將在相同情況下打出來的任兩個數字給填入就可以算出傷害了，經測試後發現最大誤差會在1左右不過即便如此應該也是很直觀了。
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+而根據圖上可看到倍率為1.04的傷害數值為4829312，與我們所填入的第一個傷害是一樣的，因此代表已經打到最大傷了。
 
-### Code Splitting
+*此為移動(手機)版的使用畫面：*
+![移動版最大傷害結果](https://i.imgur.com/Ic3r2hE.jpg)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+### 防呆
+若使用者不小心輸入數字以外如符號或字母等等，亦或者是輸入了負的數字都會跳出此通知來告訴使用者要輸入合邏輯的東西。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+*此為電腦版畫面：*
+![電腦版最大傷害防呆](https://i.imgur.com/48Bjf3B.jpg)
 
-### Making a Progressive Web App
+*此為移動(手機)版的使用畫面：*
+![移動版最大傷害防呆](https://i.imgur.com/MJgLwep.jpg)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 報錯
+倘若使用者隨便輸入兩個數字，或者兩個數字是在不同的情況下打出的，就會跳出以下錯誤通知來告訴使用者要確認數值是否在相同狀況下打出的。
 
-### Advanced Configuration
+*此為電腦版畫面：*
+![電腦版最大傷害報錯](https://i.imgur.com/MPzdGqu.jpg)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+*此為移動(手機)版的使用畫面：*
+![移動版最大傷害報錯](https://i.imgur.com/Oqf7AKx.jpg)
 
-### Deployment
+## 必殺計量頁籤
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 基本介紹
 
-### `npm run build` fails to minify
+*此為電腦版必殺計量頁籤畫面：*
+![電腦版必殺計量頁籤](https://i.imgur.com/D3bsNum.jpg)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> 情境介紹：
+> 為什麼要算必殺計量呢？
+> 在攻略榮光挑戰甚至是其他的PVE時，根據對應關卡的打法不同會有不同的必殺開法，例如5T雙必、9T四必等等或者是特殊開法的1+1+1+3或1+2+3。
+> 
+> 單純要湊出這些結果並不難，難就難在要在傷害最大化的同時擠出這些結果，有的時候可能因為支援卡位或者是冒險擺的位置不同而有不同的結果，又或者導致必殺湊不夠或傷害無法最大化。
+> 
+> 此功能的目的在於幫助使用者在調整隊伍時**不用一直進遊戲測試必殺量是否足夠**，只需要看著表格就可以清楚知道自己的調整以及想法是否可行。
+>
+> 背景知識：
+> 此遊戲一個必殺量為13+8/9個行動數(約等於13.888...89)
+> 基礎行動數為1、技能提供的額外33%行動數為1/3、67%為2/3，而111%則為1/9，其他以此類推。
+> 
+> 使用說明：
+> 玩家需要做的事就是選擇該回合哪個角色有多少行動數即可，填完後按下計算就可以得到結果了。
+
+*將段落開始時提供的資料中的必殺計量填入後結果如下圖：*
+![電腦版必殺計量結果](https://i.imgur.com/3F7C1ZY.jpg)
+
+**此處先假設我們要打5T雙必**
+
+Trun1：我有兩隻屍體分別是菲亞娜以及奧塔，這之中菲亞娜帶了全體33%增量的支援，因此再加上他本身的技能就等於全隊增量了67%(0.666...)。而由於拉札爾本身已經攜帶祝祭劍姬(單體增量111%)，因此支援部分取高選擇了111%然後再加上菲亞娜的主動技能33%等於144%
+
+Turn2：菲亞娜與奧塔撤退後他們倆就不會吃到增量了。接著後排的阿伊莎與風春補上，風春上場時就速發全體增33%，因此風春自身與阿伊莎都會有33%的增量
+
+Turn3、Turn4：由於增量Buff回合數足夠，因此前面寫到%數可以一直填到第四回合
+
+圖中我們可以看到第二回合的最下方由0變成了1、第四回合則是由1變成了2，這代表的是**當第二回合所有人都行動後就可以湊到1個必殺以及第四回合所有人都行動後可以湊到第2個必殺**
+
+這樣我們就可以在第五回合時打出兩個必殺了
+
+**※請注意角色的出手順序也會有影響，例如快速攻擊/快速發動的角色會吃不到舊火魔鐵匠的普速必殺增量**
+
+*以下為移動(手機)版的使用畫面：*
+![移動版必殺計量結果1](https://i.imgur.com/DjMzJUK.jpg)
+![移動版必殺計量結果2](https://i.imgur.com/vwDugEe.jpg)
+
+## 技能傷害頁籤
+
+### 基本介紹
+*此為電腦版技能傷害頁籤畫面：*
+![電腦版技能傷害頁籤](https://i.imgur.com/0f8z2Er.png)
+
+> 情境介紹：
+> 很多人在調整隊伍時一定都會想過如果我把某支援改成某某支援的話，傷害不知道是會變高還是變低吧？只要通過調整填入的數據就可以來檢查結果到底是如何了！
+>
+> 背景知識：
+> 1、物魔耐與屬性耐性是加在一起計算的
+> 2、PVE通常預設怪物防禦是100，但也有例外，例如此次的雷之領域的BOSS防禦為630
+> 3、計算公式參考巴哈的 [【心得】傷害計算方式 - 2/20更新](https://forum.gamer.com.tw/C.php?bsn=31981&snA=4012&tnum=5&bPage=2) 這篇文章
+> 
+> 使用說明：
+> 玩家需要做的事就是填入要計算的角色的招式傷害相關資料即可。
+
+*將段落開始時提供的資料中的相關數據填入後結果如下圖：*
+![電腦版技能傷害結果](https://i.imgur.com/2X2WXfE.png)
+
+**此次要計算的傷害為T3單打的拉札爾必殺傷害**
+
+#### **主要區塊：**
+拉札爾搭上支援的面板攻擊力是3318
+主屬加乘總額為：自身技能的70%力量、支援的25%力量、記憶的6%力量，因此填入101
+是否有種族殺手：拉札爾剛好有野獸殺手，所以選是
+主屬發升：拉札爾的必殺是特殊增傷，因此沒有發動時上升的傷害加成
+對象防禦力：如背景知識的第二點提到此次的雷之領域BOSS防禦力為630
+對象耐久加成：對方無耐久上升的Buff，因此不填入或填0
+招式威力：必殺技為超強威力
+攻擊對象：拉札爾的招式都是單體，因此選單體
+
+#### **特殊區塊：**
+屬性傷害總額：地屬性傷害為自身技能的100%、支援的20%、記憶的6%，因此填入126
+耐性降低總額：地屬性耐性為關卡的-50%、拉札爾技能的-40%、蕾娜的-20%，物理耐性為奧塔的-40%、阿波羅的-25%，因此填入175
+特殊增傷總額：拉札爾的必殺特殊增傷的條件湊滿時為200%，因此填入200
+單體/群體耐性：此情境下計算的是單體耐性，拉札爾本身技能-30%以及支援-25%，因此填入55
+被動增傷技能、被動增傷幅度：拉札爾的發展技能中有閃擊(爆擊傷害提升)30%，因此前面選擇閃擊，後面填入數值30
+武器革新：武器會依照革新的等級而增加不同的增傷效果，我的拉札爾專武革新滿了，因此選擇革新滿的選項
+必殺Combo數：遊戲中會根據必殺Combo的數量來增加傷害，每多一個必殺就多20%傷害，由於單必沒有加成因此此處可不填或者填1
+
+#### **其他區塊：**
+是否爆擊、是否貫穿：此處要計算最完美情況下的傷害，因此爆擊與貫穿都選是
+是否被格擋：理由同上，所以此處選否
+是否為戰爭遊戲模式：戰爭遊戲模式下玩家打出的傷害並不像PVE那麼破格，這代表其實在PVP中是會自動減傷的，此處選否
+
+所有數據都填入後可看到計算結果與段落開始時提供的必殺傷害有符合
+
+*以下為移動(手機)版的使用畫面：*
+![移動版技能傷害結果1](https://i.imgur.com/Yk5xJxR.jpg)
+![移動版技能傷害結果2](https://i.imgur.com/e6M7QHD.jpg)
+![移動版技能傷害結果3](https://i.imgur.com/Pfn6DX7.jpg)
+
+**※最下方的傷害表格是可以左右滑動的，並不是破版**
+
+### 防呆
+
+※此處防呆寫的比較簡易一點，請各位手下留情
+
+> 若使用者不小心輸入數字以外如符號或字母等等，亦或者是輸入了負的數字都會跳出此通知來告訴使用者要輸入合邏輯的東西。
+
+*此為電腦版畫面*
+![電腦版技能傷害防呆1](https://i.imgur.com/EMIwhxx.jpg)
+
+*此為移動(手機版)版使用畫面*
+![移動版技能傷害防呆1](https://i.imgur.com/KOhSDlT.jpg)
+
+> 主屬加成總額等等的數值是容許負的，因此防呆訊息有所不同
+> ※耐性降低總額也可以輸入負的，負負得正就代表對方的耐性上升是正的
+
+*此為電腦版畫面*
+![電腦版技能傷害防呆2](https://i.imgur.com/4vAPOy8.png)
+
+*此為移動(手機版)版使用畫面*
+![移動版技能傷害防呆2](https://i.imgur.com/1hAfMWm.jpg)
+
+> 由於普通攻擊或者反擊都是單體對象，因此若對象選擇全體時就會跳出防呆訊息
+
+*此為電腦版畫面*
+![電腦版技能傷害防呆3](https://i.imgur.com/dbxQADL.png)
+
+*此為移動(手機版)版使用畫面*
+![移動版技能傷害防呆3](https://i.imgur.com/18gDLEC.jpg)
+
+> 貫穿與格擋不會同時發生，因此若貫穿與格擋都選擇是時就會跳出防呆訊息
+
+*此為電腦版畫面*
+![電腦版技能傷害防呆4](https://i.imgur.com/w0k9XZp.png)
+
+*此為移動(手機版)版使用畫面*
+![移動版技能傷害防呆4](https://i.imgur.com/nkFzHdD.jpg)
+
+# 後記
+其實這東西本來想盡早產出來，但畢竟也是用到新學的技術，加上實習期間其實沒有太多空閒時間學，所以比預期的時間還要晚完成了一點。
+
+但學到的部份說歸說，Hook其實也只用到useState、memo而已。像是useEffect呀之類的，雖然有想過要用在哪但後來決定還是先不用。
+
+至於美編的就請大家先將就了，小的我沒有什麼美感，所以沒有弄出太多花裡胡哨的東西。
+
+謝謝大家！
