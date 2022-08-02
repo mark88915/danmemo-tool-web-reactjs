@@ -138,17 +138,21 @@ Turn3、Turn4：由於增量Buff回合數足夠，因此前面寫到%數可以�
 #### 基本介紹
 
 *此為電腦版進階設定選單收合畫面：*
+
 ![電腦版進階設定選單收合](https://i.imgur.com/jQ2yl4H.gif)
 ※手機版為上下開合，為了不占空間就不Demo了
 
 選單內容包含：
 1. 第幾個角色
+
 ![電腦版進階設定角色選擇](https://i.imgur.com/GGjvYIz.png)
 
 2. 第幾至第幾回合
+
 ![電腦版進階設定回合選擇](https://i.imgur.com/n87xQX9.png)
 
 3. 增量幅度
+
 ![電腦版進階設定增量幅度選擇](https://i.imgur.com/R4p8oYk.png)
 
 使用說明：
