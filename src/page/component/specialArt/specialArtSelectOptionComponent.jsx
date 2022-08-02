@@ -1,6 +1,6 @@
-const SpecialArtSelectOptionComponent = ({turn}) => {
+const SpecialArtSelectOptionComponent = ({turn, characterNo}) => {
     return (
-        <select className={turn}>
+        <select className={turn} data-turn={turn} data-characterno={characterNo}>
             <option value="0">未行動</option>
             <option value="0%">無增量</option>
             <option value="33%">33%</option>

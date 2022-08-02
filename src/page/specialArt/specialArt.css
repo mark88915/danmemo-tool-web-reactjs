@@ -15,8 +15,78 @@ td > input, td > select {
     font-size: 18px;
 }
 
-#buttonGroup {
+#functionGroup {
+    display: flex;
     position: fixed;
     margin-top: 3px;
-    right: 0;
+    width: 100%;
+    justify-content: end;
+}
+
+#advancedSettings select, #setAdvanced, #clearAdvanced {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+#setAdvanced, #clearAdvanced {
+    background-color: #fff;
+    border: 3px solid white;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+#advancedSet {
+    background-color: #fff;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 45px;
+    border: 3px solid white;
+    border-radius: 5px;
+    user-select: none;
+}
+
+#setAdvanced:hover, #clearAdvanced:hover, #advancedSet:hover {
+    background-color: rgb(240, 240, 240);
+    border-color: rgb(240, 240, 240);
+    color: blue;
+}
+
+#setAdvanced:active, #clearAdvanced:active, #advancedSet:active {
+    border-color: blue;
+}
+
+#advancedSettingBlockSwitch {
+    position: absolute;
+    opacity: 0%;
+}
+
+#advancedSettingBlockSwitch:checked + #advancedSettingBlock {
+    transform: translateX(0);
+    opacity: 100%;
+}
+
+#advancedSettingBlock {
+    background-color: rgba(148, 148, 148, 0.795);
+
+    transform: translateX(100%);
+    transition: .3s;
+    z-index: -1;
+    opacity: 0%;
+}
+
+@media screen and (max-width: 600px) {
+    #advancedSettingBlockSwitch:checked + #advancedSettingBlock {
+        transform: translateY(100%);
+        opacity: 100%;
+    }
+
+    #advancedSettingBlock {
+        position: absolute;
+        transform: translateY(0);
+    }
 }
