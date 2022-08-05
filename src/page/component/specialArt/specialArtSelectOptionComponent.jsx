@@ -9,6 +9,8 @@ const SpecialArtSelectOptionComponent = ({turn, characterNo}) => {
             <option value="111%">111%</option>
             <option value="133%">133%</option>
             <option value="144%">144%</option>
+            <option value="166%">167%</option>
+            <option value="177%">178%</option>
             <option value="200%">200%</option>
             <option value="211%">211%</option>
             <option value="0">必殺</option>

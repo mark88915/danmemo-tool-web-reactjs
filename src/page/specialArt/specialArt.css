@@ -20,7 +20,7 @@ td > input, td > select {
     position: fixed;
     margin-top: 3px;
     width: 100%;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 #advancedSettings select, #setAdvanced, #clearAdvanced {
@@ -81,7 +81,7 @@ td > input, td > select {
 
 @media screen and (max-width: 600px) {
     #advancedSettingBlockSwitch:checked + #advancedSettingBlock {
-        transform: translateY(100%);
+        transform: translateY(110%);
         opacity: 100%;
     }
 
