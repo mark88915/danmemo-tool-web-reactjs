@@ -4,6 +4,7 @@ import SpecialArtTableTotalFooter from "../component/specialArt/specialArtTableT
 import SpecialArtTableRateFooter from "../component/specialArt/specialArtTableRateFooter";
 import SpecialArtTableHeader from "../component/specialArt/specialArtTableHeader";
 import AdvancedSetting from "../component/specialArt/advancedSetting";
+import MemoriaSetting from "../component/specialArt/memoriaSetting";
 
 import { useState } from 'react'
 
@@ -54,6 +55,13 @@ const SpecialArt = () => {
         "222%": 3 + 2 / 9
     };
 
+    const MemoriaSpecialArtRate = {
+        "11%": 1 / 9,
+        "22%": 2 / 9,
+        "33%": 3 / 9,
+        "44%": 4 / 9
+    }
+
     /* 計算用function */
     /**
      * 1.開始計算前先清除上次計算的紀錄
@@ -71,7 +79,19 @@ const SpecialArt = () => {
         setTurns.forEach(function (setTurn, index) {
             var thisTurnRate = Array.from(document.getElementsByClassName((index + 1).toString()));
 
-            thisTurnRate.forEach(turnRate => total = total + specialArtRate[turnRate.value]);
+            var isMemoriaActivated = document.getElementById("MemoriaSettingCheck").checked;
+
+            if (index === 5 && isMemoriaActivated) {
+                var memoriaRate = MemoriaSpecialArtRate[document.getElementById("MemoriaSpecialArtRate").value];
+
+                thisTurnRate.forEach(function (turnRate) {
+                    if (turnRate.value !== "0") {
+                        total = total + specialArtRate[turnRate.value] + memoriaRate;
+                    }
+                });
+            } else {
+                thisTurnRate.forEach(turnRate => total = total + specialArtRate[turnRate.value]);
+            }
 
             setTurn(total + previousTurnTotal);
             previousTurnTotal += total;
@@ -147,7 +167,7 @@ const SpecialArt = () => {
 
     return (
         <div id="specialArtCalculateContainer">
-
+            <MemoriaSetting />
             <table id="specialArtCalculateTable">
                 <thead>
                     <SpecialArtTableHeader />
