@@ -1,5 +1,7 @@
 # 記憶憧憬工具網
 
+### [網站連結](https://danmemotoolweb.github.io/danmemo-tool-web-reactjs/)
+
 ## 前言
 
 此Side Project的製作動機有二：
@@ -329,3 +331,5 @@ xx根據記憶等級分別為：
 至於美編的就請大家先將就了，小的我沒有什麼美感，所以沒有弄出太多花裡胡哨的東西。
 
 謝謝大家！
+
+###### tags: `React.js` `Fronted-End` `Javascript`
