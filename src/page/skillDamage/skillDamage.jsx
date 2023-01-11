@@ -5,6 +5,39 @@ import SkillDamageTable from '../component/skillDamage/skillDamageTable';
 import SpecialField from '../component/skillDamage/specialField';
 import './skillDamage.css'
 
+/** 傷害係數對照，格式[skillPower][target] **/
+const skillPowerRateObj = {
+    "normal-physical": { "multi": "沒有全體普通攻擊/反擊", "single": 2 },
+    "normal-magic": { "multi": "沒有全體魔法攻擊/反擊", "single": 1.5 },
+    "low": { "multi": 2.2, "single": 3 },
+    "middle": { "multi": 2.3, "single": 3.4 },
+    "high": { "multi": 2.4, "single": 3.8 },
+    "super": { "multi": 2.8, "single": 4.2 },
+    "ultra": { "multi": 7.2, "single": 8 }
+}
+
+/** 主屬發升對照，格式[target][skillPower][isSkillBoost] **/
+const skillBoostRateObj = {
+    "multi": {
+        "normal-physical": { "boost": "沒有全體的普通攻擊/反擊", "greatBoost": "沒有全體的普通攻擊/反擊" },
+        "normal-magic": { "boost": "沒有全體的魔法攻擊/反擊", "greatBoost": "沒有全體的魔法攻擊/反擊" },
+        "low": { "boost": "沒有【全體弱威力發動時上升】技能", "greatBoost": "沒有【全體弱威力發動時大幅上升】技能" },
+        "middle": { "boost": 0.4, "greatBoost": "沒有【全體中威力發動時大幅上升】技能" },
+        "high": { "boost": 0.4, "greatBoost": "沒有【全體強威力發動時大幅上升】技能" },
+        "super": { "boost": 0.4, "greatBoost": "沒有【全體超威力發動時大幅上升】技能" },
+        "ultra": { "boost": 0.4, "greatBoost": 0.7 }
+    },
+    "single": {
+        "normal-physical": { "boost": "單體的普通攻擊/反擊不會發動時上升", "greatBoost": "單體的普通攻擊/反擊不會發動時大幅上升" },
+        "normal-magic": { "boost": "單體的魔法攻擊/反擊不會發動時上升", "greatBoost": "沒有單體的魔法攻擊/反擊不會發動時大幅上升" },
+        "low": { "boost": 0.4, "greatBoost": "沒有【單體弱威力發動時大幅上升】技能" },
+        "middle": { "boost": 0.3, "greatBoost": "沒有【單體中威力發動時大幅上升】技能" },
+        "high": { "boost": 0.3, "greatBoost": 0.7 },
+        "super": { "boost": 0.4, "greatBoost": 0.7 },
+        "ultra": { "boost": 0.4, "greatBoost": 0.7 }
+    }
+}
+
 const SkillDamage = () => {
     /** start of main field **/
     const [power, SetPower] = useState("");
@@ -67,46 +100,15 @@ const SkillDamage = () => {
     // 傷害State
     const [basicDamage, SetBasicDamage] = useState(0);
 
-    /** 傷害係數對照，格式[skillPower][target] **/
-    const skillPowerRateObj = {
-        "normal-physical": { "multi": "沒有全體普通攻擊/反擊", "single": 2 },
-        "normal-magic": { "multi": "沒有全體魔法攻擊/反擊", "single": 1.5 },
-        "low": { "multi": 2.2, "single": 3 },
-        "middle": { "multi": 2.3, "single": 3.4 },
-        "high": { "multi": 2.4, "single": 3.8 },
-        "super": { "multi": 2.8, "single": 4.2 },
-        "ultra": { "multi": 7.2, "single": 8 }
-    }
-
-    /** 主屬發升對照，格式[target][skillPower][isSkillBoost] **/
-    const skillBoostRateObj = {
-        "multi": {
-            "normal-physical": { "boost": "沒有全體的普通攻擊/反擊", "greatBoost": "沒有全體的普通攻擊/反擊" },
-            "normal-magic": { "boost": "沒有全體的魔法攻擊/反擊", "greatBoost": "沒有全體的魔法攻擊/反擊" },
-            "low": { "boost": "沒有【全體弱威力發動時上升】技能", "greatBoost": "沒有【全體弱威力發動時大幅上升】技能" },
-            "middle": { "boost": 0.4, "greatBoost": "沒有【全體中威力發動時大幅上升】技能" },
-            "high": { "boost": 0.4, "greatBoost": "沒有【全體強威力發動時大幅上升】技能" },
-            "super": { "boost": 0.4, "greatBoost": "沒有【全體超威力發動時大幅上升】技能" },
-            "ultra": { "boost": 0.4, "greatBoost": 0.7 }
-        },
-        "single": {
-            "normal-physical": { "boost": "單體的普通攻擊/反擊不會發動時上升", "greatBoost": "單體的普通攻擊/反擊不會發動時大幅上升" },
-            "normal-magic": { "boost": "單體的魔法攻擊/反擊不會發動時上升", "greatBoost": "沒有單體的魔法攻擊/反擊不會發動時大幅上升" },
-            "low": { "boost": 0.4, "greatBoost": "沒有【單體弱威力發動時大幅上升】技能" },
-            "middle": { "boost": 0.3, "greatBoost": "沒有【單體中威力發動時大幅上升】技能" },
-            "high": { "boost": 0.3, "greatBoost": 0.7 },
-            "super": { "boost": 0.4, "greatBoost": 0.7 },
-            "ultra": { "boost": 0.4, "greatBoost": 0.7 }
-        }
-    }
+    
 
     /** 計算function **/
     function CheckAndCalculateSkillDamage() {
         /** 種族殺手 **/
-        var killerRate = isKiller ? 1.5 : 1;
+        let killerRate = isKiller ? 1.5 : 1;
 
         /** 主屬發升 **/
-        var skillBoostRate;
+        let skillBoostRate;
         if (isSkillBoost === "noBoost") {
             skillBoostRate = 0;
         } else if (typeof skillBoostRateObj[target][skillPower][isSkillBoost] === "string") { // 如果沒有對應數字，就設定錯誤訊息並return
@@ -117,7 +119,7 @@ const SkillDamage = () => {
         }
 
         /** 貫穿降防 **/
-        var enemyPenenstratedRate = isPenenstration ? 0.5 : 1;
+        let enemyPenenstratedRate = isPenenstration ? 0.5 : 1;
 
         /** 威力係數 **/
         // 如果沒有對應數字，就設定錯誤訊息並return
@@ -125,7 +127,7 @@ const SkillDamage = () => {
             SetBasicDamage(skillPowerRateObj[skillPower][target]);
             return;
         }
-        var skillPowerRate = skillPowerRateObj[skillPower][target];
+        let skillPowerRate = skillPowerRateObj[skillPower][target];
 
         /** 檢核貫穿與格擋 **/
         if (isPenenstration && isGuarded) {
@@ -134,7 +136,7 @@ const SkillDamage = () => {
         }
 
         /** 被動增傷 **/
-        var developmentAbilityBoostRate = 0;
+        let developmentAbilityBoostRate = 0;
         /**
         情境1：如果發展能力為閃擊且有發生爆擊
         情境2：如果發展能力為穿擊且有發生貫穿
@@ -160,7 +162,7 @@ const SkillDamage = () => {
         情境2：如果武器革新滿但攻擊時只發生爆擊或貫穿，傷害上升3%
         情境3：如果武器革新滿且攻擊時同時發生爆擊與貫穿，傷害上升6%
         **/
-        var weaponUpgradeBoostRate = 0;
+        let weaponUpgradeBoostRate = 0;
         if (weaponUpgrade === "level-Fourth" && isPenenstration) {
             weaponUpgradeBoostRate = 0.03;
         } else if (weaponUpgrade === "fullUpgrade") {
@@ -172,22 +174,22 @@ const SkillDamage = () => {
         }
 
         /** 必殺combo數增傷 **/
-        var specialArtComboBoostRate = specialArtCombo === "" ? 1 : specialArtCombo;
+        let specialArtComboBoostRate = specialArtCombo === "" ? 1 : specialArtCombo;
 
         /** 爆擊傷害(爆擊本身就會提高50%傷害，與爆擊增傷被動不同) **/
-        var criticalBoostRate = isCritical ? 1.5 : 1;
+        let criticalBoostRate = isCritical ? 1.5 : 1;
 
         /** 敵方格擋降傷 **/
-        var enemyGuardRate = isGuarded ? 0.5 : 1;
+        let enemyGuardRate = isGuarded ? 0.5 : 1;
 
         /** 戰爭遊戲降傷 **/
-        var warGameModeRate = isWarGameMode ? 0.2 : 1;
+        let warGameModeRate = isWarGameMode ? 0.2 : 1;
 
         /** 攻擊力相關數值部分 **/
-        var powerPart = Math.floor(Math.floor(Math.floor(power * (1 + powerBuffRate / 100)) * killerRate) * (1 + skillBoostRate));
+        let powerPart = Math.floor(Math.floor(Math.floor(power * (1 + powerBuffRate / 100)) * killerRate) * (1 + skillBoostRate));
 
         /** 敵方防禦相關數值部分 **/
-        var enemyDefensePart = Math.floor(Math.floor(enemyDefense * (1 + enemyDurability / 100)) * enemyPenenstratedRate) / 2
+        let enemyDefensePart = Math.floor(Math.floor(enemyDefense * (1 + enemyDurability / 100)) * enemyPenenstratedRate) / 2
 
         /** 計算公式參考此篇：https://forum.gamer.com.tw/C.php?bsn=31981&snA=4012&tnum=5&bPage=2 **/
         SetBasicDamage(Math.floor((powerPart - enemyDefensePart) * skillPowerRate * (1 + specialBoost / 100) * (1 + elementDamage / 100) * (1 + resist / 100) * (1 + targetResist / 100) * (1 + developmentAbilityBoostRate + weaponUpgradeBoostRate) * (1 + 0.2 * (specialArtComboBoostRate - 1)) * criticalBoostRate * enemyGuardRate * warGameModeRate));

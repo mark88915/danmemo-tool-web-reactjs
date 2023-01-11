@@ -1,4 +1,4 @@
-const AdvancedSetting = ({ battleTurns, advancedState, setAdvancedState }) => {
+const AdvancedSetting = ({ advancedState, setAdvancedState }) => {
     return (
         <div id="advancedSettings">
             <select id="advancedCharacterNo" value={advancedState.advancedCharacterNo} onChange={e => { setAdvancedState.setAdvancedChaNo(e.target.value) }}>

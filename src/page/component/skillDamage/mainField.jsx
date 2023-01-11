@@ -1,33 +1,27 @@
+// 正整數驗證規則
+const positiveInputRule = new RegExp("^\\d*$");
+
+// 整數驗證規則
+const inputRule = new RegExp("^-?\\d*$");
+
 const MainField = ({ mainFieldState }) => {
-
-    // 正整數驗證規則
-    var positiveInputRule = new RegExp("^\\d*$");
-
-    // 整數驗證規則
-    var inputRule = new RegExp("^-?\\d*$");
 
     /** input檢核，只能輸入大於等於零的整數 **/
     function CheckPositiveInputIsLegal(e) {
-        var inputValue = e.target.value;
+        let inputValue = e.target.value;
 
         if (positiveInputRule.test(inputValue) || inputValue === "") {
             mainFieldState[e.target.id]["setState"](inputValue);
-            return;
         }
-
-        alert("請輸入正整數");
     }
 
     /** input檢核，只能為正或負整數 **/
     function CheckInputIsLegal(e) {
-        var inputValue = e.target.value;
+        let inputValue = e.target.value;
 
         if (inputRule.test(inputValue) || inputValue === "") {
             mainFieldState[e.target.id]["setState"](inputValue);
-            return;
         }
-
-        alert("請輸入整數");
     }
 
     /** 設定select的value，不能直接使用物件裡的setState作為onChange的function **/

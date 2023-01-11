@@ -8,8 +8,35 @@ import MemoriaSetting from "../component/specialArt/memoriaSetting";
 
 import { useState } from 'react'
 
+const battleTurns = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"] //回合數
+
+const specialArtRate = { // 必殺技量對應數值
+    "0": 0,
+    "0%": 1,
+    "33%": 1 + 1 / 3,
+    "44%": 1 + 4 / 9,
+    "66%": 1 + 2 / 3,
+    "77%": 1 + 7 / 9,
+    "100%": 2,
+    "111%": 2 + 1 / 9,
+    "133%": 2 + 1 / 3,
+    "144%": 2 + 1 / 3 + 1 / 9,
+    "155%": 2 + 1 / 9 + 4 / 9,
+    "166%": 2 + 2 / 3,
+    "177%": 2 + 2 / 3 + 1 / 9,
+    "200%": 3,
+    "211%": 3 + 1 / 9,
+    "222%": 3 + 2 / 9
+};
+
+const MemoriaSpecialArtRate = {
+    "11%": 1 / 9,
+    "22%": 2 / 9,
+    "33%": 3 / 9,
+    "44%": 4 / 9
+}
+
 const SpecialArt = () => {
-    const battleTurns = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"] //回合數
 
     /* 決定表格內容要不要重新渲染的state */
     const [notToReRender, SetNotToReRender] = useState(true);
@@ -35,32 +62,6 @@ const SpecialArt = () => {
 
     /* 傳每回合技量用的陣列 */
     const turns = [turn1, turn2, turn3, turn4, turn5, turn6, turn7, turn8, turn9, turn10, turn11, turn12, turn13, turn14];
-
-    const specialArtRate = { // 必殺技量對應數值
-        "0": 0,
-        "0%": 1,
-        "33%": 1 + 1 / 3,
-        "44%": 1 + 4 / 9,
-        "66%": 1 + 2 / 3,
-        "77%": 1 + 7 / 9,
-        "100%": 2,
-        "111%": 2 + 1 / 9,
-        "133%": 2 + 1 / 3,
-        "144%": 2 + 1 / 3 + 1 / 9,
-        "155%": 2 + 1 / 9 + 4 / 9,
-        "166%": 2 + 2 / 3,
-        "177%": 2 + 2 / 3 + 1 / 9,
-        "200%": 3,
-        "211%": 3 + 1 / 9,
-        "222%": 3 + 2 / 9
-    };
-
-    const MemoriaSpecialArtRate = {
-        "11%": 1 / 9,
-        "22%": 2 / 9,
-        "33%": 3 / 9,
-        "44%": 4 / 9
-    }
 
     /* 計算用function */
     /**
@@ -137,10 +138,10 @@ const SpecialArt = () => {
         // 若回合設定通過驗證就先設定表格內容不能被重新渲染
         SetNotToReRender(true);
 
-        var chosenCharacter = document.querySelectorAll("[data-characterno='" + advancedCharacterNo + "']");
+        let chosenCharacter = document.querySelectorAll("[data-characterno='" + advancedCharacterNo + "']");
 
         chosenCharacter.forEach(function (thisCharacter) {
-            var thisTurn = parseInt(thisCharacter.dataset.turn);
+            let thisTurn = parseInt(thisCharacter.dataset.turn);
 
             if (thisTurn >= advancedFirstTurn && thisTurn <= advancedLastTurn) {
                 thisCharacter.value = advancedSARate;
