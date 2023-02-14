@@ -51,7 +51,7 @@ html, body {
 }
 
 #background {
-    background-image: url('./image/5anni.png');
+    background-image: url('./image/5anni.webp'), url('./image/5anni.png');
     background-size: cover;
     background-attachment: fixed;
     height: 100%;
